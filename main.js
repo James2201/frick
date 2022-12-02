@@ -35,46 +35,65 @@ function goBtnClicked() {
 // MENU FUNCTIONS
 function allColors() {
   // Display Name and Family of All Colors
-  let divstr;
   for (let i = 0; i < 140; i++){
-    divstr += colorData[i].name;
+    outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
   }
-  outputEl.innerHTML = "<h3>Display All Colors</h3>";
+  
 }
 
 function brightColors() {
   // Display Name and Brightness of All Colors with a Brightness of 200 and Higher
-  for (let i = 0; i < 140; i++){
-
+  
+  for (let i = 0; i < colorData.length; i++){
+    if(colorData[i].brightness >= 200 ){
+      outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
+    }
   }
-  outputEl.innerHTML = "<h3>Display Bright Colors</h3>";
+  
 }
 
 function redPinkFamilies() {
   // Count Colors in Red/Pink Families
-  for (let i = 0; i < 140; i++){
-    if (colorData[i].family === "Pink" || colorData[i] === "Red"){
+  let count = 0;
+  for (let i = 0; i < colorData.length; i++){
+    if (colorData[i].family === "Pink" || colorData[i].family === "Red"){
+      count++
     }
   }
-  outputEl.innerHTML = "<h3>Count Red/Pink Family Colors</h3>";
+  outputEl.innerHTML = `<p>count:</p> ${count}`;
 }
 
 function familySearch() {
-  for (let i = 0; i < 140; i++){
-    if (colorData[i].family === inputEl){
-      divstr === colorData[i].family;
+  let count = 0;
+  let input = prompt("TYPE NOW");
+  for (let i = 0; i < colorData.length; i++){
+    if (colorData[i].family === input){
+      count++
+      outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
     }
   }
+  outputEl.innerHTML += `<p>count:</p> ${count}`;
   // Display Name and Family of all Colors that Match a User Provided Family Name. Also Output a Count of Colors Found.
-  outputEl.innerHTML = "<h3>Family Search</h3>";
 }
 
 function startLetterSearch() {
+  let count = 0;
+  let input = prompt("TYPE NOW");
   for (let i = 0; i < colorData.length; i++){
-    if (colorData[i].name === inputEl){
-      divstr += colorData[i].name;
+    if (colorData[i].name[0] === input){
+      outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
+      count++;
     }
   }
   // Display Name of all Colors that Match a User Provided Starting Letter. Also Output a Count of Colors Found.
-  outputEl.innerHTML = divstr;
+  outputEl.innerHTML += `<p>count:</p> ${count}`;
 }
+
+function gethtmlstr(name, family){
+  return `
+    <div>
+      ${name + family}
+    </div>   
+  `
+}
+
