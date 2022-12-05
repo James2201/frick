@@ -36,7 +36,7 @@ function goBtnClicked() {
 function allColors() {
   // Display Name and Family of All Colors
   for (let i = 0; i < 140; i++){
-    outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
+    outputEl.innerHTML += `<div>${colorData[i].name} - ${colorData[i].family}</div>`
   }
   
 }
@@ -46,7 +46,7 @@ function brightColors() {
   
   for (let i = 0; i < colorData.length; i++){
     if(colorData[i].brightness >= 200 ){
-      outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
+      outputEl.innerHTML += `<div>${colorData[i].name} - ${colorData[i].family}</div>`
     }
   }
   
@@ -81,19 +81,10 @@ function startLetterSearch() {
   let input = prompt("TYPE NOW");
   for (let i = 0; i < colorData.length; i++){
     if (colorData[i].name[0] === input){
-      outputEl.innerHTML += `<div>${colorData[i].name} in ${colorData[i].family}</div>`
+      outputEl.innerHTML += `<div>${colorData[i].name} - ${colorData[i].family}</div>`
       count++;
     }
   }
   // Display Name of all Colors that Match a User Provided Starting Letter. Also Output a Count of Colors Found.
   outputEl.innerHTML += `<p>count:</p> ${count}`;
 }
-
-function gethtmlstr(name, family){
-  return `
-    <div>
-      ${name + family}
-    </div>   
-  `
-}
-
