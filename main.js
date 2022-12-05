@@ -35,7 +35,7 @@ function goBtnClicked() {
 // MENU FUNCTIONS
 function allColors() {
   // Display Name and Family of All Colors
-  for (let i = 0; i < 140; i++){
+  for (let i = 0; i < colorData.length; i++){
     outputEl.innerHTML += `<div>${colorData[i].name} - ${colorData[i].family}</div>`
   }
   
